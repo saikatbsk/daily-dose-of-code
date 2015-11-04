@@ -4,7 +4,8 @@
 using namespace std;
 using namespace cv;
 
-String cascadename = "classifiers/banana_classifier.xml";
+//String cascadename = "classifiers/banana_classifier.xml";
+String cascadename = "classifiers/haarcascade_frontalface_default.xml";
 CascadeClassifier cascade;
 
 void detectAndDisplay(Mat frame) {
@@ -22,10 +23,8 @@ void detectAndDisplay(Mat frame) {
                              1.1          /* scaleFactor: how much the image size is reduced at each image scale */,
                              2            /* minNeighbors: how many neighbors each candidate rectangle should have */,
                              0,
-                             Size(80, 80) /* Objects smaller than the size are ignored */
+                             Size(10, 10) /* Objects smaller than the size are ignored */
                             );
-
-    cout << objects.size() << "\n";
 
     for(size_t i = 0 ; i < objects.size() ; i++) {
         Point pt1 = Point(objects[i].x, objects[i].y);
@@ -40,9 +39,15 @@ void detectAndDisplay(Mat frame) {
 int main(int argc, char * argv[]) {
     int k;
 
-    Mat src = imread(argv[1]);
+    Mat src;
 
-    if(src.empty()) {
+    if(argc < 2) {
+        cerr << "---> Insufficient number of arguments!\n";
+        cout << "Usage: a.out [image_file]\n";
+        return -1;
+    }
+
+    if((src = imread(argv[1])).empty()) {
         cerr << "---> Error loading image!\n";
         return -1;
     }
