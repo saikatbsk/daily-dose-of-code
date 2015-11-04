@@ -4,7 +4,7 @@
 using namespace std;
 using namespace cv;
 
-//String cascadename = "classifiers/banana_classifier.xml";
+// String cascadename = "classifiers/banana_classifier.xml";
 String cascadename = "classifiers/haarcascade_frontalface_default.xml";
 CascadeClassifier cascade;
 
@@ -14,10 +14,11 @@ void detectAndDisplay(Mat frame) {
 
     namedWindow("Result - CascadeClassifier", CV_WINDOW_AUTOSIZE);
 
+    /* Convert the image to Grayscale and equalize histogram */
     cvtColor(frame, frame_gray, CV_BGR2GRAY);
     equalizeHist(frame_gray, frame_gray);
 
-    //-- Detect objects
+    /* Detect objects */
     cascade.detectMultiScale(frame_gray   /* Matrix of the type CV_8U */,
                              objects      /* Vector of rectangles */,
                              1.1          /* scaleFactor: how much the image size is reduced at each image scale */,
@@ -26,6 +27,7 @@ void detectAndDisplay(Mat frame) {
                              Size(10, 10) /* Objects smaller than the size are ignored */
                             );
 
+    /* Draw rectangles around detected objects */
     for(size_t i = 0 ; i < objects.size() ; i++) {
         Point pt1 = Point(objects[i].x, objects[i].y);
         Point pt2 = Point(objects[i].x + objects[i].width, objects[i].y + objects[i].height);
@@ -47,16 +49,19 @@ int main(int argc, char * argv[]) {
         return -1;
     }
 
+    /* Load input image */
     if((src = imread(argv[1])).empty()) {
         cerr << "---> Error loading image!\n";
         return -1;
     }
 
+    /* Load cascade classifier */
     if(!(cascade.load(cascadename))) {
         cerr << "---> Error loading cascade!\n";
         return -1;
     }
 
+    /* Detect objects and display the image */
     detectAndDisplay(src);
 
     while((k = waitKey(1)) != 27) {}
