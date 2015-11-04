@@ -1,0 +1,6 @@
+To run the executable, if compiled using shared library,
+
+in bash: export LD_LIBRARY_PATH=/path/to/lib:$LD_LIBRARY_PATH
+in tcsh: setenv LD_LIBRARY_PATH /path/to/lib:$LD_LIBRARY_PATH
+
+Note: Replace /path/to/lib with the path where the shared libs are kept.

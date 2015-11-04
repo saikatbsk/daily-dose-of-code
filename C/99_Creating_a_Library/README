@@ -1,0 +1,11 @@
+*** --- LAME README --- ***
+
+Creating a library using GCC.
+
+Just run make to compile:
+
+$ make
+
+Note: The test directory includes test.c and a Makefile to test the libraries.
+
+Reference: http://crasseux.com/books/ctutorial/Building-a-library.html
