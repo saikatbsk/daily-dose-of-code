@@ -1,0 +1,5 @@
+data.txt contains the adjacency matrix representation of the graph.
+
+File format:
+Line 1: Number of Nodes (n).
+Line 2 to (n + 1): Actual values for the adjacency matrix.
