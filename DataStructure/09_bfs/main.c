@@ -10,9 +10,6 @@ int main() {
 
     Result_t r;
 
-    Queue_t ne;
-    queueInit(&ne);
-
     FILE * fp;
 
     if(!(fp = fopen("data.txt", "r+"))) {
