@@ -1,6 +1,6 @@
 #include <stdio.h>
 
 int main() {
-    printf("%d\n", sizeof(8.9));
+    printf("%d\n", sizeof(short int));
     return 0;
 }
