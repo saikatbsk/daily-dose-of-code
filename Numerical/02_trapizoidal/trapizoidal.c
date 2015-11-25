@@ -7,10 +7,8 @@
 #define f(x) x*x*x
 
 int main(int argc, char ** argv) {
-    float a, /* lower limit */
-          b, /* upper limit */
-          h; /* segmentation width */
-    int n;   /* number of intervals */
+    float a /* lower limit */, b /* upper limit */, h /* segmentation width */;
+    int n;  /* number of intervals */
     int nData;
     int i;
 
