@@ -11,9 +11,8 @@ void ddaLine(int x0, int y0, int x1, int y1, int color) {
     float xInc, yInc, x, y;
 
     /*
-     * Calculate displacement  along x,  and y-axis
-     * To handle  negative  changes we  do not take
-     * absolute values here
+     * Calculate displacement along x, and y-axis. To handle negative
+     * changes we  do not  consider  taking  the absolute values here
      */
     dx = x1 - x0;
     dy = y1 - y0;
@@ -28,10 +27,9 @@ void ddaLine(int x0, int y0, int x1, int y1, int color) {
     yInc = dy / (float)steps;
 
     /*
-     * Draw the initial point   on screen which  is
-     * (x0 , y0). We don't care about the direction
-     * of propagation of the line as we have  taken
-     * care of the  negative changes  in dx, and dy
+     * Draw the initial point on screen which is (x0, y0).  We do not
+     * care about the direction of propagation of the line as we have
+     * previously taken care of the negative changes in dx, and in dy
      */
     putpixel(ROUND(x0), ROUND(y0), color);
 
