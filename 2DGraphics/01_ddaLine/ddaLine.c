@@ -13,7 +13,7 @@ void ddaLine(int x0, int y0, int x1, int y1, int color) {
     /*
      * Calculate displacement  along x,  and y-axis
      * To handle  negative  changes we  do not take
-     * ablosute values here
+     * absolute values here
      */
     dx = x1 - x0;
     dy = y1 - y0;
