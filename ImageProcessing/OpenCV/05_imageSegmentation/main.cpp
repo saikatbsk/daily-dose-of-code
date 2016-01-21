@@ -4,7 +4,7 @@
  */
 #include <opencv2/opencv.hpp>
 #include <sstream>
-#define MAX_CLUSTERS 6
+#define MAX_CLUSTERS 5
 #define MAX_ATTEMPTS 3
 
 using namespace cv;
@@ -12,8 +12,9 @@ using namespace std;
 
 int main(int argc, char * argv[]) {
     Mat src = imread(argv[1], 1 /* CV_LOAD_IMAGE_COLOR */);
-
     Mat tmp = src.clone();
+
+    cvtColor(tmp, tmp, CV_BGR2Lab);
     blur(tmp, tmp, Size(15, 15));
 
     Mat dat(src.rows * src.cols, 3, CV_32F);
@@ -29,7 +30,7 @@ int main(int argc, char * argv[]) {
     Mat centers;
 
     kmeans(dat, MAX_CLUSTERS, labels,
-            TermCriteria(CV_TERMCRIT_ITER | CV_TERMCRIT_EPS, 10, 1.0),
+            TermCriteria(CV_TERMCRIT_ITER | CV_TERMCRIT_EPS, 1000, 0.0001),
             MAX_ATTEMPTS, KMEANS_PP_CENTERS, centers);
 
     Mat clusters[MAX_CLUSTERS];
@@ -52,14 +53,24 @@ int main(int argc, char * argv[]) {
     tmp.release();
 
     for(int i = 0 ; i < MAX_CLUSTERS ; i++) {
+        Mat gray, bin;
+
+        cvtColor(clusters[i], gray, CV_BGR2GRAY);
+        threshold(gray, bin, 1, 255, CV_THRESH_BINARY);
+        cvtColor(bin, bin, CV_GRAY2BGR);
+        bitwise_and(src, bin, tmp);
+
         string title;
         stringstream s;
 
-        s << "Cluster" << i;
+        s << "Extracted Objects #" << i;
         title = s.str();
 
-        pyrDown(clusters[i], tmp, Size((src.cols + 1) / 2, (src.rows + 1) / 2), BORDER_DEFAULT);
+        pyrDown(tmp, tmp, Size((src.cols + 1) / 2, (src.rows + 1) / 2), BORDER_DEFAULT);
         imshow(title, tmp);
+
+        gray.release();
+        bin.release();
         tmp.release();
     }
 
