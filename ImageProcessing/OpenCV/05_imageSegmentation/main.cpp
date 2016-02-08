@@ -4,7 +4,7 @@
  */
 #include <opencv2/opencv.hpp>
 #include <sstream>
-#define MAX_CLUSTERS 5
+#define MAX_CLUSTERS 6
 #define MAX_ATTEMPTS 3
 
 using namespace cv;
