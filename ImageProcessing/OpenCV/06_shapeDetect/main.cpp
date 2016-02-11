@@ -57,7 +57,7 @@ int main(int argc, char ** argv) {
                 putLabel(dst, "RECTANGLE", contours[i]);
             else if(vertices == 5 /* && mincos >= -0.34 && maxcos <= -0.27 */)
                 putLabel(dst, "PENTAGON", contours[i]);
-            else if(vertices == 6 && mincos >= -0.55 && maxcos <= -0.45)
+            else if(vertices == 6 && mincos >= -0.65 && maxcos <= -0.35)
                 putLabel(dst, "HEXAGON", contours[i]);
         }
         else {

@@ -35,7 +35,7 @@ int Stack::pop() {
     /*
      * If numerical value of top  is greater than zero decrease value
      * of top  (as the last legitimate item was at position top - 1),
-     * and return the element  that is in  the position indicated by
+     * and return  the element  that is in  the position indicated by
      * the current numerical value of top, from items array.
      */
     if(top > 0) {
