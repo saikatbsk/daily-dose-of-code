@@ -4,7 +4,7 @@ using namespace cv;
 using namespace std;
 
 int main(int argc, char ** argv) {
-    Mat src = imread("img/shapes.jpg");
+    Mat src = imread("img/shapes2.png");
     if(src.empty())
         return -1;
 
@@ -73,6 +73,9 @@ int main(int argc, char ** argv) {
     }
 
     //imshow("Source Image", src);
+    //Mat tmp;
+
+    //pyrDown(dst, tmp, Size((src.cols + 1) / 2, (src.rows + 1) / 2), BORDER_DEFAULT);
     imshow("Destination Image", dst);
     waitKey(0);
 
