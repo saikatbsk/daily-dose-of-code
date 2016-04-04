@@ -4,22 +4,12 @@ confMatrix = evaluate(categoryClassifier, validationSets);
 
 % Try the classifier on test images
 
-img = read(validationSets(1), 17);
-labelIdx = predict(categoryClassifier, img);
-categoryClassifier.Labels(labelIdx);
-subplot(1, 4, 1); imshow(img); title(categoryClassifier.Labels(labelIdx));
-
-img = read(validationSets(2), 10);
-labelIdx = predict(categoryClassifier, img);
-categoryClassifier.Labels(labelIdx);
-subplot(1, 4, 2); imshow(img); title(categoryClassifier.Labels(labelIdx));
-
-img = read(validationSets(3), 21);
-labelIdx = predict(categoryClassifier, img);
-categoryClassifier.Labels(labelIdx);
-subplot(1, 4, 3); imshow(img); title(categoryClassifier.Labels(labelIdx));
-
-img = read(validationSets(4), 21);
-labelIdx = predict(categoryClassifier, img);
-categoryClassifier.Labels(labelIdx);
-subplot(1, 4, 4); imshow(img); title(categoryClassifier.Labels(labelIdx));
+for i = 1:4
+    for j = 1:20
+        img = read(validationSets(i), j);
+        labelIdx = predict(categoryClassifier, img);
+        categoryClassifier.Labels(labelIdx);
+        subplot(4, 5, j); imshow(img); title(categoryClassifier.Labels(labelIdx));
+    end
+    pause;
+end

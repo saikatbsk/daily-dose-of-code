@@ -16,7 +16,7 @@ imageSets = partition(imageSets, minSetCount, 'randomize');
 
 % Separate set into training and validation data ==========================
 
-[trainingSets, validationSets] = partition(imageSets, 0.3, 'randomize');
+[trainingSets, validationSets] = partition(imageSets, 0.6, 'randomize');
 
 % Creating visual vocabulary and training an image category classifier ====
 % 1. Extract SURF features from all images in all image categories.
