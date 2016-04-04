@@ -1,6 +1,12 @@
 % Evaluate the classifier for all categories ==============================
 
-confMatrix = evaluate(categoryClassifier, validationSets);
+% validationSetPath = '/home/saikat/Workspace/Datasets/miscObjects';
+% validationSets = [imageSet(fullfile(validationSetPath, 'umbrella')), ...
+    % imageSet(fullfile(validationSetPath, 'camera')), ...
+    % imageSet(fullfile(validationSetPath, 'dolphin')), ...
+    % imageSet(fullfile(validationSetPath, 'airplanes'))]
+
+% confMatrix = evaluate(categoryClassifier, validationSets);
 
 % Try the classifier on test images
 
