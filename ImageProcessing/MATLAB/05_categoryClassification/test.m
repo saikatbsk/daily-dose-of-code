@@ -1,21 +1,18 @@
 % Evaluate the classifier for all categories ==============================
 
-% validationSetPath = '/home/saikat/Workspace/Datasets/miscObjects';
-% validationSets = [imageSet(fullfile(validationSetPath, 'umbrella')), ...
-    % imageSet(fullfile(validationSetPath, 'camera')), ...
-    % imageSet(fullfile(validationSetPath, 'dolphin')), ...
-    % imageSet(fullfile(validationSetPath, 'airplanes'))]
+confMatrix = evaluate(categoryClassifier, validationSets);
 
-% confMatrix = evaluate(categoryClassifier, validationSets);
+% Try the classifier on test images =======================================
 
-% Try the classifier on test images
+img = read(validationSets(1), 1);
+[labelIdx, score] = predict(categoryClassifier, img);
+imshow(img); title(categoryClassifier.Labels(labelIdx));
 
-for i = 1:4
-    for j = 1:20
-        img = read(validationSets(i), j);
-        labelIdx = predict(categoryClassifier, img);
-        categoryClassifier.Labels(labelIdx);
-        subplot(4, 5, j); imshow(img); title(categoryClassifier.Labels(labelIdx));
-    end
-    pause;
-end
+% for i = 1:4
+%     for j = 1:10
+%         img = read(validationSets(i), j);
+%         labelIdx = predict(categoryClassifier, img);
+%         subplot(2, 5, j); imshow(img); title(categoryClassifier.Labels(labelIdx));
+%     end
+%     pause;
+% end
