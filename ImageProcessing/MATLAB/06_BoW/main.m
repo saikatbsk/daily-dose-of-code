@@ -4,11 +4,15 @@ clear; clc;
 
 % Defining path and loading dataset =======================================
 
-datasetFolderRoot = fullfile('~/Workspace/Datasets/miscdb');
+datasetFolderRoot = fullfile('~/Workspace/Datasets/101_ObjectCategories');
 imageSets = [imageSet(fullfile(datasetFolderRoot, 'accordion')), ...
     imageSet(fullfile(datasetFolderRoot, 'airplanes')), ...
     imageSet(fullfile(datasetFolderRoot, 'bonsai')), ...
-    imageSet(fullfile(datasetFolderRoot, 'cellphone'))];
+    imageSet(fullfile(datasetFolderRoot, 'cellphone')) ...
+    imageSet(fullfile(datasetFolderRoot, 'elephant')), ...
+    imageSet(fullfile(datasetFolderRoot, 'flamingo')), ...
+    imageSet(fullfile(datasetFolderRoot, 'watch')), ...
+    imageSet(fullfile(datasetFolderRoot, 'wrench'))];
 
 % Preparing training and validation image sets ============================
 % We want equal number of images in all training sets.  We can take the min
@@ -31,14 +35,14 @@ bag = bagOfFeatures(trainingSets);
 
 % The "Visual Word Occurrences" histogram =================================
 
-img = read(trainingSets(1), 1);
-featureVector = encode(bag, img);
+% img = read(trainingSets(1), 1);
+% featureVector = encode(bag, img);
 
-figure;
-bar(featureVector);
-title('Visual Word Occurrences');
-xlabel('Visual word index');
-ylabel('Frequency of occurrence');
+% figure;
+% bar(featureVector);
+% title('Visual Word Occurrences');
+% xlabel('Visual word index');
+% ylabel('Frequency of occurrence');
 
 % Train the classifier ====================================================
 
