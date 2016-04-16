@@ -8,11 +8,7 @@ datasetFolderRoot = fullfile('~/Workspace/Datasets/101_ObjectCategories');
 imageSets = [imageSet(fullfile(datasetFolderRoot, 'dolphin')), ...
     imageSet(fullfile(datasetFolderRoot, 'airplanes')), ...
     imageSet(fullfile(datasetFolderRoot, 'bonsai')), ...
-    imageSet(fullfile(datasetFolderRoot, 'cellphone')) ...
-    imageSet(fullfile(datasetFolderRoot, 'elephant')), ...
-    imageSet(fullfile(datasetFolderRoot, 'flamingo')), ...
-    imageSet(fullfile(datasetFolderRoot, 'watch')), ...
-    imageSet(fullfile(datasetFolderRoot, 'wrench'))];
+    imageSet(fullfile(datasetFolderRoot, 'cellphone'))];
 
 % Preparing training and validation image sets ============================
 % We want equal number of images in all training sets.  We can take the min
@@ -31,19 +27,4 @@ imageSets   = partition(imageSets, minSetCount, 'randomize');
 % 2. Construct a visual vocabulary using K-means clustering.
 % =========================================================================
 
-bag = bagOfFeatures(trainingSets);
 
-% The "Visual Word Occurrences" histogram =================================
-
-% img = read(trainingSets(1), 1);
-% featureVector = encode(bag, img);
-
-% figure;
-% bar(featureVector);
-% title('Visual Word Occurrences');
-% xlabel('Visual word index');
-% ylabel('Frequency of occurrence');
-
-% Train the classifier ====================================================
-
-categoryClassifier = trainImageCategoryClassifier(trainingSets, bag);
