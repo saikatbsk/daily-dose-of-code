@@ -1,3 +1,5 @@
+clear; clc;
+
 nImages = 70; % Should not be changed
 fileId = fopen('trainingset.txt', 'r');
 

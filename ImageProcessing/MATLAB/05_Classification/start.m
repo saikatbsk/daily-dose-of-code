@@ -1,3 +1,0 @@
-clear; clc;
-main
-test
