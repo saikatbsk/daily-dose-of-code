@@ -3,7 +3,7 @@ clear; clc;
 nImages = 0;
 fileId = fopen('trainingset.txt', 'r');
 
-labels = cell(nImages, 1);
+labels = cell(100, 1);
 
 target_height_of_image = 64;
 target_height_of_block = 2;
@@ -21,9 +21,6 @@ while ~feof(fileId)
     labels{i} = strcat(name);
 
     img = imread(strcat(line));
-
-    [dim1 dim2] = size(img);
-    dim_ratio_orig(i, 1) = dim1 / dim2;
 
     img = imresize(img, target_dim_of_image);
 

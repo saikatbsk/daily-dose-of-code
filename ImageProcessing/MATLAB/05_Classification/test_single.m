@@ -5,9 +5,6 @@ str = input(prompt, 's');
 
 src = imread(str);
 
-[dim1 dim2] = size(src);
-dim_ratio_test = dim1 / dim2;
-
 img = imresize(src, target_dim_of_image);
 
 caTest = mat2cell(img, target_dim_of_each_block, target_dim_of_each_block, chnls);

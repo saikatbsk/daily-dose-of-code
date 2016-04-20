@@ -1,6 +1,6 @@
 fp = fopen('testset.txt', 'r');
 
-testLabels = cell(nImages, 1);
+testLabels = cell(100, 1);
 
 testIndex = 1;
 success   = 0;
@@ -9,12 +9,11 @@ while ~feof(fp)
     l = fgets(fp);
     [testpath, testfilename, ext] = fileparts(l); % Break filename into parts for future use
 
+    testLabels{testIndex} = strcat(testfilename);
+
     testdata = strcat(l);
 
     img = imread(strcat(testdata));
-
-    [dim1 dim2] = size(img);
-    dim_ratio_test = dim1 / dim2;
 
     img = imresize(img, target_dim_of_image);
 
@@ -57,13 +56,13 @@ while ~feof(fp)
         end
     end
 
-    actualCategory = strcat(labels(testIndex));
-    predictedCategory = strcat(labels(IndexOfMinSSD));
+    actualCategory = strcat(testLabels(testIndex));     % Actual image being tested
+    predictedCategory = strcat(labels(IndexOfMinSSD));  % Test image matched with image in the training set
 
     result(testIndex, 1) = [actualCategory];
     result(testIndex, 2) = [predictedCategory];
 
-    if strcmp(result(testIndex, 1), result(testIndex, 2)) | (abs(dim_ratio_orig(testIndex, 1) - dim_ratio_test) < 0.01)
+    if strcmp(result(testIndex, 1), result(testIndex, 2))
         fprintf('%s correctly matched with: %s\n', char(result(testIndex, 1)), char(result(testIndex, 2)));
         success = success + 1;
     else
