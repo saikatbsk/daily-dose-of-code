@@ -15,6 +15,8 @@ for i = 1:numberOfImageClasses
 
     for j = 1:numberOfImagesPerClass
         img = read(validationSets(i), j);
+
+        % score is the negated average binary loss per class
         [labelIdx, score] = predict(categoryClassifier, img);
         [minval, index] = min(abs(score));
         scores(index) = scores(index) + 1;
@@ -34,9 +36,18 @@ for i = 1:size(imageSets, 2)
     labels(i) = cellstr(imageSets(i).Description);
 end
 
+numchars = ((size(labels, 2) + 1) * 11) + 2;
+for i = 1:numchars/2 - 4
+    fprintf(' ');
+end
+fprintf('PREDICTED')
 fprintf('\nKNOWN      | ');
 for i = 1:size(labels, 2)
     fprintf('%10s ', strjoin(labels(i)));
+end
+fprintf('\n');
+for i = 1:numchars
+    fprintf('-');
 end
 fprintf('\n');
 
@@ -53,4 +64,4 @@ end
 avg_acc = sum(diag(confmat)) / numberOfImageClasses;
 avg_acc_p = round(avg_acc * 100);
 
-fprintf('\nAverage accuracy = %d percent.\n', avg_acc_p);
+fprintf('\nAverage accuracy = %d%%.\n', avg_acc_p);

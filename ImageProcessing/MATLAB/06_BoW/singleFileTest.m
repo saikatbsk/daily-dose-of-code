@@ -10,13 +10,18 @@ while ~strcmp(op, 'N')
 
     if exist(filename, 'file') == 2
         img = imread(filename);
+
+        % score is the negated average binary loss per class
         [labelIdx, score] = predict(categoryClassifier, img);
+
+        [score]
+
         imshow(img); title(strcat('PREDICTED: ', categoryClassifier.Labels(labelIdx)));
     else
         fprintf('>>> File does not exist!\n');
     end
 
-    prompt = 'Try again? [y/n] ';
+    prompt = '\nTry again? [y/n] ';
     op = input(prompt, 's');
 
     if strcmp(op, 'n')
