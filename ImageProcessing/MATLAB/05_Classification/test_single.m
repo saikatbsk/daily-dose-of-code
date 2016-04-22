@@ -48,5 +48,7 @@ end
 
 predictedCategory = strcat(labels(IndexOfMinSSD));
 
-subplot(2, 1, 1); imshow(src); title('test image');
-subplot(2, 1, 2); imshow(strcat('trainingset/', char(predictedCategory), '.png')); title('matched with');
+test_title = str;
+match_title = strcat('trainingset/', predictedCategory, '.png');
+subplot(2, 1, 1); imshow(char(test_title)); title(strcat('test image: ', test_title));
+subplot(2, 1, 2); imshow(char(match_title)); title(strcat('matched with: ', match_title));

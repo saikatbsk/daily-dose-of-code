@@ -68,8 +68,8 @@ while ~feof(fp)
     else
         fprintf('%s wrongly matched with: %s\n', char(result(testIndex, 1)), char(result(testIndex, 2)));
 
-        test_title = strcat('testset/', predictedCategory, '.png');
-        match_title = strcat('trainingset/', actualCategory, '.png');
+        %test_title = strcat('testset/', actualCategory, '.png');
+        %match_title = strcat('trainingset/', predictedCategory, '.png');
         %subplot(2, 1, 1); imshow(char(test_title)); title(strcat('test image: ', test_title));
         %subplot(2, 1, 2); imshow(char(match_title)); title(strcat('matched with: ', match_title));
         %pause;
