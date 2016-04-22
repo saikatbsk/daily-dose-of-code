@@ -27,7 +27,6 @@ end
 
 % Find sum of squared difference between mean values computed from training
 % image and test image
-
 for I = 1:nImages
     a = means(:, :, I);
     b = meansTest(:,:);
@@ -35,7 +34,6 @@ for I = 1:nImages
 end
 
 % Find minimum squared difference
-
 minssd = D(1);
 IndexOfMinSSD = 1;
 
