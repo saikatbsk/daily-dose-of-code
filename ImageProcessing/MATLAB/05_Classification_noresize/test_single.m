@@ -3,7 +3,7 @@ str = input(prompt, 's');
 
 [testpath, testfilename, ext] = fileparts(str);
 
-src = imread(str);
+img = imread(str);
 
 caTest = part_image(img);
 meansTest = zeros(size(caTest, 1), size(caTest, 2));
@@ -27,7 +27,7 @@ end
 % image and test image
 for I = 1:nImages
     a = means(:, :, I);
-    b = meansTest(:,:);
+    b = meansTest(:, :);
     D(I) = sumsqr(a-b);
 end
 

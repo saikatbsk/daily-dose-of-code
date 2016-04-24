@@ -14,9 +14,12 @@ while ~strcmp(op, 'N')
         % score is the negated average binary loss per class
         [labelIdx, score] = predict(categoryClassifier, img);
 
-        [score]
+        img = insertText(img, [0 0], strcat('PREDICTED: ', categoryClassifier.Labels(labelIdx)), 'FontSize', 18, ...
+            'BoxColor', 'red', 'BoxOpacity', .8, 'TextColor', 'white');
+        img = insertText(img, [0 28], strcat('MATCH: ', num2str((1 - min(abs(score))) * 100), ' %'), ...
+        'FontSize', 18, 'BoxColor', 'red', 'BoxOpacity', .8, 'TextColor', 'white');
 
-        imshow(img); title(strcat('PREDICTED: ', categoryClassifier.Labels(labelIdx)));
+        imshow(img);
     else
         fprintf('>>> File does not exist!\n');
     end
