@@ -2,7 +2,7 @@ function [new_cell] = part_image(mat_src)
     height = size(mat_src, 1);
     width  = size(mat_src, 2);
 
-    nParts = 9;
+    nParts = 9;     % Total number of blocks = nParts * nParts
 
     offset_x = width / nParts;
     offset_y = height / nParts;

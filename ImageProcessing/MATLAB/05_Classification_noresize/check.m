@@ -1,5 +1,5 @@
-img = imread('testset/bd.png');
-img = imresize(img, [400 400]);
+img = imread('testset/ad.png');
+%img = imresize(img, [400 400]);
 ca = part_image(img);
 
 rows = size(ca, 1);
