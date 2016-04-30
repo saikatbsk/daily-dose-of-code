@@ -1,5 +1,4 @@
 % Try the classifier on single test images ================================
-
 op = '';
 
 while ~strcmp(op, 'N')
@@ -13,7 +12,6 @@ while ~strcmp(op, 'N')
 
         % score is the negated average binary loss per class
         [labelIdx, score] = predict(categoryClassifier, img);
-
         img = insertText(img, [0 0], strcat('PREDICTED: ', categoryClassifier.Labels(labelIdx)), 'FontSize', 18, ...
             'BoxColor', 'red', 'BoxOpacity', .8, 'TextColor', 'white');
         img = insertText(img, [0 28], strcat('MATCH: ', num2str((1 - min(abs(score))) * 100), ' %'), ...

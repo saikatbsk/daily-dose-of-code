@@ -3,6 +3,7 @@
 i = 1;
 
 while i <= size(validationSets, 2)
+    % Read a random image from the validation set
     img = read(validationSets(i), randi(validationSets(1).Count, 1));
 
     % score is the negated average binary loss per class

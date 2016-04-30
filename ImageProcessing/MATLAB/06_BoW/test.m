@@ -1,7 +1,5 @@
 % Create confusion matrix for evaluation ==================================
 
-% confMatrix = evaluate(categoryClassifier, validationSets);
-
 numberOfImageClasses = size(validationSets, 2);
 numberOfImagesPerClass = validationSets(1).Count;
 
