@@ -6,9 +6,10 @@ import java.io.FileNotFoundException;   //-- Needed for file operation
 class Demo2 {
     public static void main(String [] args) {
         String line;
+        Scanner in = null;
 
         try {
-            Scanner in = new Scanner(new File("Sample.txt"));
+            in = new Scanner(new File("Sample.txt"));
             // Scanner in = new Scanner(new File("sample.txt")); // Exception
 
             line = in.nextLine();
@@ -17,6 +18,9 @@ class Demo2 {
         }
         catch(FileNotFoundException ex) {
             ex.printStackTrace();
+        }
+        finally {
+            in.close();
         }
     }
 }

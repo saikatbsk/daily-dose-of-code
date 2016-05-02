@@ -14,5 +14,7 @@ class Demo {
         line = in.nextLine();
 
         System.out.println(line);
+
+        in.close();
     }
 }
