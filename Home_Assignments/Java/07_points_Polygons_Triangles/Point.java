@@ -1,15 +1,15 @@
 import java.lang.Math;
 
 class Point {
-    int x;
-    int y;
+    double x;
+    double y;
 
     Point() {
         x = 0;
         y = 0;
     }
 
-    Point(int xval, int yval) {
+    Point(double xval, double yval) {
         x = xval;
         y = yval;
     }
