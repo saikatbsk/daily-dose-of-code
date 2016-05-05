@@ -1,6 +1,4 @@
 /* ==================================================================
- * Assignment 01
- * ------------------------------------------------------------------
  * A program to implement the class student with name,  marks,  init-
  * function,  function to compute average and function to display the
  * data.
