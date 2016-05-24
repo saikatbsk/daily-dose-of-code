@@ -34,16 +34,18 @@ for i = 1:length(class_names)
     end
 end
 
-fprintf('Done\n'); fflush(stdout);
+fprintf('Done\n\n'); fflush(stdout);
 
 %% Extract SURF features from training set ================================
 
-% all_des        : All the SURF descriptors (m*64)
-% all_des_sample : All the SURF descriptors per sample (1*n cell)
-% class_label    : Class label for each surf descriptor (m*1)
+% all_des        - All the SURF descriptors (m*64)
+% all_des_sample - All the SURF descriptors per sample (1*n cell)
+% class_label    - Class label for each surf descriptor (m*1)
 
 [all_des all_des_sample class_label] = extractFeatures(training_set);
 
 %% Creating codebook using K-mean clustering ==============================
 
+N = 500;    % Number of clusters
 
+centers = createKmeanClusters(all_des, all_des_sample, N);
