@@ -20,7 +20,7 @@ function d = EuclideanDistance(a, b)
     end
 
     if(size(a, 2) ~= size(b, 2))
-        fprintf('>>> Error! A and B should be of same dimensionality.\n\n');
+        fprintf('>>> Error! A and B should be of same dimensionality.\n\n'); fflush(stdout);
     end
 
     aa = sum(a.*a, 2);

@@ -23,9 +23,9 @@ function [all_des all_des_sample class_label] = extractFeatures(training_set)
 
     % Add OpenSURF_version1c/ to Octave path
     currentfile = 'extractFeatures.m';
-    pwd = which(currentfile);
-    pwd = pwd(1:(end - length(currentfile)));
-    addpath([pwd 'OpenSURF_version1c']);
+    _pwd = which(currentfile);
+    _pwd = _pwd(1:(end - length(currentfile)));
+    addpath([_pwd 'OpenSURF_version1c']);
 
     progress = 0;
     k = 0;
@@ -46,10 +46,10 @@ function [all_des all_des_sample class_label] = extractFeatures(training_set)
 
             tmp = ones(size(D, 1), 1) .* k;
             class_label = cat(1, class_label, tmp);
-        end
 
-        progress = 100 * (i / size(training_set, 1));
-        fprintf('\b\b\b\b%3d%%', progress); fflush(stdout);
+            progress = ((i - 1) * 25) + (25 * (j / size(training_set, 2)));
+            fprintf('\b\b\b\b%3d%%', ceil(progress)); fflush(stdout);
+        end
     end
 
     fprintf('\b\b\b\bDone\n\n'); fflush(stdout);
