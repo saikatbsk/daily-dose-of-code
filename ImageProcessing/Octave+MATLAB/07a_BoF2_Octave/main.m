@@ -71,3 +71,5 @@ codebook_test = buildHist_test(centers, all_des_sample_test, knnTHRESH, N);
 conf_mat = classify(codebook, codebook_test, class_names, test_set, N);
 
 displayResults;
+
+save('variables.mat');

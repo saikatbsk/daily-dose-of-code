@@ -29,7 +29,7 @@ function [all_des all_des_sample class_label] = extractFeatures(image_set)
 
     k = 0;
 
-    fprintf('Calculating SURF descriptors for input samples..'); fflush(stdout);
+    fprintf('Extracting SURF descriptors from input samples..'); fflush(stdout);
 
     for i = 1:size(image_set, 1)
         k = k + 1;
