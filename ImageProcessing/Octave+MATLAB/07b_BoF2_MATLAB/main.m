@@ -18,8 +18,8 @@ clear; clc;
 
 fprintf('Loading dataset..');
 
-dataset_root    = '../../../../Datasets/101_ObjectCategories';
-class_names     = { 'accordion', 'airplanes', 'bonsai', 'butterfly', 'chair', 'chandelier', 'Leopards' };
+dataset_root    = '../../../../101_ObjectCategories';
+class_names     = { 'accordion', 'airplanes', 'bonsai', 'butterfly', 'cellphone', 'chandelier', 'Leopards' };
 image_per_class = 30;
 
 image_set    = imageRead(dataset_root, class_names, image_per_class);
@@ -71,3 +71,5 @@ codebook_test = buildHist_test(centers, all_des_sample_test, knnTHRESH, N);
 conf_mat = classify(codebook, codebook_test, class_names, test_set, N);
 
 displayResults;
+
+save('variables_win.mat');
