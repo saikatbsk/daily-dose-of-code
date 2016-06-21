@@ -6,6 +6,3 @@
 
 4. Run `singleTest` to test individual test files. IMPORTANT: provide [category/filename] as input.
     e.g. input: accordion/image_0004.jpg
-
-5. Only the 'testThreshold.m' contains functions necessary to test wheather an image does not belong to any class.
-    run `testThreshold` to test with 64 unknown images.
