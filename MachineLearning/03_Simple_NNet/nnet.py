@@ -11,7 +11,7 @@ Y = np.array( [ [0], [1], [1], [0] ] )                          # Output
 
 np.random.seed(1)
 
-syn0 = 2 * np.random.random((3, 1)) - 1;    # Synapse 0
+syn0 = 2 * np.random.random((3, 1)) - 1     # Synapse 0
 
 for i in range(10000):
     l0 = X
