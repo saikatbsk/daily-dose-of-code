@@ -14,10 +14,13 @@ np.random.seed(1)
 syn0 = 2 * np.random.random((3, 4)) - 1     # Synapse 0
 syn1 = 2 * np.random.random((4, 1)) - 1     # Synapse 1
 
-for i in range(10000):
+for i in range(60000):
     l0 = X
     l1 = sigmoid(np.dot(l0, syn0))
     l2 = sigmoid(np.dot(l1, syn1))
+
+    if(i % 10000 == 0):
+        print("Error:" + str(np.mean(np.abs(Y - l2))))
 
     l2_del = (Y - l2) * sigmoid(l2, True)
     l1_del = np.dot(l2_del, syn1.T) * sigmoid(l1, True)
