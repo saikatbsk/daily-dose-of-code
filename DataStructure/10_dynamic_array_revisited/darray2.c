@@ -12,12 +12,17 @@ int main() {
     printf("(b+1) = %u\n", (b+1));
     printf("(b+3) = %u\n", (b+2));
 
+    printf("\n");
+
     printf("*(b+2)   = %u\n", *(b+2));
     printf("*(b+2)+3 = %u\n", *(b+2)+3);
+
+    printf("\n");
 
     *(*(b+2)+3) = 5;
 
     printf("*(*(b+2)+3) = %u\n", *(*(b+2)+3));
+    printf("b[2][3]     = %u\n", b[2][3]);
 
     return 0;
 }
