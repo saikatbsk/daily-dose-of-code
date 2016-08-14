@@ -13,7 +13,7 @@ np.random.seed(1)
 
 syn0 = 2 * np.random.random((3, 1)) - 1     # Synapse 0
 
-for i in range(10000):
+for i in range(60000):
     l0 = X
     l1 = sigmoid(np.dot(l0, syn0))
 
