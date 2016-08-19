@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <unordered_set>
 #include <unordered_map>
 
@@ -11,8 +12,8 @@ using std::endl;
 
 string encodeStr(string str) {
     unordered_map<char, int> map;
-    string hash = "";
     int i = 0;
+    string hash = "";
 
     for(char ch : str) {
         if(map.find(ch) == map.end())
@@ -25,25 +26,23 @@ string encodeStr(string str) {
 }
 
 void findMatches(unordered_set<string> dict, string pattern) {
-    int length = pattern.length();
-
+    int len = pattern.length();
     string hash = encodeStr(pattern);
 
-    //-- For each word in dictionary
+    //-- For every string in dictionary
     for(string word : dict) {
-        if(word.length() == length && encodeStr(word) == hash) {
+        if(hash == encodeStr(word) && len == word.length())
             cout << word << " ";
-        }
     }
+
+    cout << endl;
 }
 
 int main() {
-    unordered_set<string> dict = { "abb", "abc", "xyz", "xyy" };
-    string pattern = "foo";
+    unordered_set<string> dict = {"xyy", "xyz", "kkk", "pyy"};
+    string pattern = "abb";
 
     findMatches(dict, pattern);
-
-    cout << endl;
 
     return 0;
 }
