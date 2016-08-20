@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//-- Decimal to binary 8 bit representation
+//-- Decimal to binary 64 bit representation
 string dec2bin(long long n) {
     string bin = "";
 
