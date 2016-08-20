@@ -12,10 +12,13 @@ using std::endl;
 
 string encodeStr(string str) {
     unordered_map<char, int> map;
+    string hash;
     int i = 0;
-    string hash = "";
+    int len = str.length();
 
-    for(char ch : str) {
+    for(int j=0 ; j<len ; j++) {
+        char ch = str.at(j);
+
         if(map.find(ch) == map.end())
             map[ch] = i++;
 
@@ -29,9 +32,10 @@ void findMatches(unordered_set<string> dict, string pattern) {
     int len = pattern.length();
     string hash = encodeStr(pattern);
 
-    //-- For every string in dictionary
-    for(string word : dict) {
-        if(hash == encodeStr(word) && len == word.length())
+    for(auto iter=dict.begin() ; iter!=dict.end() ; iter++) {
+        string word = *iter;
+
+        if(word.length() == len && encodeStr(word) == hash)
             cout << word << " ";
     }
 
