@@ -19,8 +19,8 @@ function [all_des all_des_sample class_label] = extractFeatures(image_set)
 
     Options.upright  = true;    % Rotation invariant
     Options.tresh    = 0.0001;  % Hessian response threshold
-    Options.extended = false;   % If true - Descriptor length 128
-    K = 64;                     % Must be same with descriptor length
+    Options.extended = true;    % If true - Descriptor length 128
+    K = 128;                    % Must be same with descriptor length
 
     % Add OpenSURF_version1c/ to Octave path
     currentfile = 'ExtractFeatures.m';
@@ -39,21 +39,14 @@ function [all_des all_des_sample class_label] = extractFeatures(image_set)
             str = char(image_set(i, j));
             img = imread(str);
 
-            if (size(img, 3) == 3)
-                img = rgb2gray(img);
-            end
+            % Extract SURF features
+            pts = OpenSurf(img, Options);
 
-            % Apply integral kernel
-            intImage = integralImage(img);
+            % Combine SURF with spatial features
+            comb_features = addSpatialFeatures(pts, img);
 
-            avgH = integralKernel([1 1 6 6], 1/36);
-            J = integralFilter(intImage, avgH);
-            J = uint8(J);
-
-            pts1 = OpenSurf(img, Options);
-            pts2 = OpenSurf(J, Options);
-
-            D = (reshape([[pts1.descriptor] [pts2.descriptor]], K, []))';  % Landmark descriptors
+            % Landmark descriptors
+            D = (reshape([comb_features], K+2, []))';
 
             all_des = cat(1, all_des, D);
             all_des_sample = cat(2, all_des_sample, D);

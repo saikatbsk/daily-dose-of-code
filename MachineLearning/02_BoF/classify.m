@@ -20,7 +20,18 @@ function conf_mat = classify(codebook, codebook_test, class_names, test_set, N)
 
     fprintf('Creating confusion matrix..');
 
-    [IDX, D] = kNearestNeighbors(codebook, codebook_test, 1);
+    % Uncomment to use a k-Nearest Neighbors classifier
+    % [IDX, D] = kNearestNeighbors(codebook, codebook_test, 1);
+
+    % Uncomment to use an ECOC model
+    class_idx = [];
+
+    for idx = 1:length(class_names)
+        class_idx = [class_idx; idx];
+    end
+
+    Mdl = fitcecoc(codebook, class_idx);
+    IDX = predict(Mdl, codebook_test);
 
     k = 1;
 

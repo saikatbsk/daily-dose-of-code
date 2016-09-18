@@ -12,8 +12,8 @@ int main() {
 
     printf("x  = %d\n", x);
     printf("*p = %d\n", *p);
-    printf("p  = %u\n", p);
-    printf("&x = %u\n", &x);
+    printf("p  = %p\n", p);
+    printf("&x = %p\n", &x);
 
     return 0;
 }
