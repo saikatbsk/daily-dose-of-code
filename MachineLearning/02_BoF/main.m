@@ -49,7 +49,7 @@ fprintf('>>> Starting training phase..\n\n');
 
 %% Creating codebook using K-mean clustering ==============================
 
-N = 500;    % Number of clusters
+N = 1000;    % Number of clusters
 
 centers = createKmeanClusters(all_des, all_des_sample, N);
 

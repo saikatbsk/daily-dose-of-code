@@ -11,12 +11,12 @@
 op = '';
 
 while ~strcmp(op, 'N')
-    %// prompt = '[category/filename] of test image? ';
-    prompt = 'Test image? ';
+    prompt = '[category/filename] of test image? ';
+    %// prompt = 'Test image? ';
     str    = input(prompt, 's');
 
-    %// filename = fullfile(dataset_root, str);
-    filename = str;
+    filename = fullfile(dataset_root, str);
+    %//filename = str;
 
     if exist(filename, 'file') == 2
         img = imread(filename);
@@ -34,7 +34,7 @@ while ~strcmp(op, 'N')
 
         mytext = strcat('PREDICTION: ', prediction);
 
-        imshow(img); title(mytext, 'fontsize', 16, 'color', 'red');
+        %// imshow(img); title(mytext, 'fontsize', 16, 'color', 'red');
     else
         fprintf('>>> File does not exist!\n\n');
     end
