@@ -44,3 +44,32 @@ for i = 1:size(conf_mat, 1)
 end
 
 fprintf('\n');
+
+%// Graphical output
+res = reshape(result, 20, [])';
+lbl = reshape(labels, 20, [])';
+
+for i = 1:size(categories, 2)
+    idx = randi([1 size(testimages, 2)]);
+    img = testimages{i, idx};
+
+    if size(img, 1) > size(img, 2)
+        img = imresize(img, [200, NaN]);
+    else
+        img = imresize(img, [NaN, 200]);
+    end
+
+    pa = ceil((200 - size(img, 1))/2);
+    pb = ceil((200 - size(img, 2))/2);
+
+    img = padarray(img, [pa pb]);
+
+    subplot(2, size(categories, 2)/2, i);
+    imshow(img);
+
+    if res(i, idx) == lbl(i, idx)
+        title(char(categories(res(i, idx))), 'FontSize', 10, 'FontWeight', 'normal');
+    else
+        title(char(categories(res(i, idx))), 'FontSize', 10, 'FontWeight', 'normal', 'Color', 'red');
+    end
+end
