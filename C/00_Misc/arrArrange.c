@@ -30,27 +30,22 @@ int * arrArrange(int * arr, int length) {
                         int tmp  = arr[k];
                         arr[k]   = arr[k-1];
                         arr[k-1] = tmp;
-
-                        break;
                     }
+                    break;
                 }
-
-                break;
             }
         }
-        else if(((i%2) != 0) && (arr[i] < 0)) {
+
+        if(((i%2) != 0) && (arr[i] < 0)) {
             for(int j = i+1 ; j < length ; j++) {
                 if(arr[j] >= 0) {
                     for(int k = j ; k > i ; k--) {
                         int tmp  = arr[k];
                         arr[k]   = arr[k-1];
                         arr[k-1] = tmp;
-
-                        break;
                     }
+                    break;
                 }
-
-                break;
             }
         }
     }
@@ -81,9 +76,26 @@ int check(int arr1[], int arr2[], int length) {
 }
 
 int main() {
+    /* Test case 1 */
+    ///*
     int inputArray[100] = {4, -13, 5, -17, 21, -3, -9, 6, 9, -22, -1, -4, 8, 7, 8, 34};
     int desiredOut[100] = {-13, 4, -17, 5, -3, 21, -9, 6, -22, 9, -1, 8, -4, 7, 8, 34};
     int lenOfInputArray = 16;
+    //*/
+
+    /* Test case 2 */
+    /*
+    int inputArray[100] = {-4, -13, -5, -17, 21, -9, 6, 9, 3, -22, 1, 4, 8, 7, -8, 34};
+    int desiredOut[100] = {-4, 21, -13, 6, -5, 9, -17, 3, -9, 1, -22, 4, -8, 8, 7, 34};
+    int lenOfInputArray = 16;
+    */
+
+    /* Test case 3 */
+    /*
+    int inputArray[100] = {4, -13, 5, -17, 21, -3, -9, 6, 37, 22};
+    int desiredOut[100] = {-13, 4, -17, 5, -3, 21, -9, 6, 37, 22};
+    int lenOfInputArray = 10;
+    */
 
     int * arr = (int *)malloc(sizeof(int) * 100);
     for(int i = 0 ; i < lenOfInputArray ; i++)
