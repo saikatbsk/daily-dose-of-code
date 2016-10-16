@@ -30,4 +30,3 @@ for i in range(60000):
 
 print("Output after training")
 print(l2)
-
