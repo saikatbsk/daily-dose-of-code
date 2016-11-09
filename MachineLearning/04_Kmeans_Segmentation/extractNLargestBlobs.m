@@ -5,7 +5,7 @@
 %   binaryImage = ExtractNLargestBlobs(binaryImage, 1)
 % Example: return a binary image with the 3 smallest blobs:
 %   binaryImage = ExtractNLargestBlobs(binaryImage, -3)
-function binaryImage = ExtractNLargestBlobs(binaryImage, numberToExtract)
+function binaryImage = extractNLargestBlobs(binaryImage, numberToExtract)
 try
     % Get all the blob properties.  Can only pass in originalImage in version R2008a and later.
     [labeledImage, numberOfBlobs] = bwlabel(binaryImage);
