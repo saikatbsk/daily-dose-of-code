@@ -28,4 +28,3 @@ function sg = sigmoid(t, deriv)
         sg = diag(t) * (1 - t);
     end
 end
-
