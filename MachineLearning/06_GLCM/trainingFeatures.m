@@ -1,4 +1,4 @@
-function [all_desc_mean all_desc_sample] = trainingFeatures(trainingset)
+function [all_desc_mean all_desc_sample] = trainingFeatures(trainingset, offsets)
     all_desc_sample = {};
     all_desc_mean   = [];
 
@@ -7,10 +7,8 @@ function [all_desc_mean all_desc_sample] = trainingFeatures(trainingset)
 
         for j = 1:size(trainingset, 2)
             img  = imread(char(trainingset(i, j)));
-            gray = rgb2gray(img);
 
-            offsets    = [0 1; -1 1; -1 0; -1 -1];
-            properties = glcmProperties(gray, offsets);
+            properties = glcmProperties(img, offsets);
 
             all_desc_sample = cat(2, all_desc_sample, properties);
             tmp = cat(1, tmp, properties);

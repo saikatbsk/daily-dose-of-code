@@ -1,17 +1,19 @@
 clear; clc;
 
 rootpath    = 'img';
-classnames  = {'grass' 'wood'};
-imagesets   = imageRead(rootpath, classnames, 10);
-trainingset = imagesets(:, 1:6);
-testset     = imagesets(:, 7:10);
+classnames  = {'1' '2' '3'};
+imagesets   = imageRead(rootpath, classnames, 7);
+trainingset = imagesets(:, 1:4);
+testset     = imagesets(:, 5:7);
 
 all_desc_sample = {};
 all_desc_mean   = [];
 all_desc_test   = [];
 
-[all_desc_mean all_desc_sample] = trainingFeatures(trainingset);
-all_desc_test = testingFeatures(testset);
+offsets = [-1 0; 1 0; 0 -1; 0 1];
+
+[all_desc_mean all_desc_sample] = trainingFeatures(trainingset, offsets);
+all_desc_test = testingFeatures(testset, offsets);
 
 % hold on;
 % for i = 1:size(trainingset, 1)
