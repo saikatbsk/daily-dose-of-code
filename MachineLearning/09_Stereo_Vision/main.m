@@ -1,8 +1,8 @@
 clear; clc;
 
 % Load images
-imL = imread('left.png');
-imR = imread('right.png');
+imL = imread('im0.png');
+imR = imread('im1.png');
 
 % Composite image for 3D viewing
 % imComp = cat(3, imL(:, :, 1), imR(:, :, 2:3));
@@ -82,8 +82,6 @@ end
 elapsed = toc();
 fprintf('Time taken %.2f min.\n', elapsed / 60.0); fflush(stdout);
 
-save 'variables.mat';
-
 fprintf('Displaying disparity map...\n'); fflush(stdout);
 
 figure(1); clf;
@@ -92,3 +90,5 @@ axis image;
 colormap('jet');
 colorbar;
 title(strcat('Basic block matching, Sub-px acc., Search right, Block size = ', num2str(blockSize)));
+
+% save 'variables.mat';
