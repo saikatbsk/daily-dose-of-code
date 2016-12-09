@@ -1,8 +1,8 @@
 clear; clc;
 
 % Load images
-imL = imread('im0.png');
-imR = imread('im1.png');
+imL = imread('02_left.jpg');
+imR = imread('02_right.jpg');
 
 % Composite image for 3D viewing
 % imComp = cat(3, imL(:, :, 1), imR(:, :, 2:3));
@@ -89,6 +89,6 @@ imshow(DBasicSubpixel, []);
 axis image;
 colormap('jet');
 colorbar;
-title(strcat('Basic block matching, Sub-px acc., Search right, Block size = ', num2str(blockSize)));
+title(strcat('Basic block matching, Sub-px acc., Search left & right, Block size = ', num2str(blockSize)));
 
 % save 'variables.mat';
