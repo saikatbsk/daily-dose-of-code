@@ -126,7 +126,6 @@ if __name__ == '__main__':
     print(" Draw a rectangle around the object using right mouse button \n")
 
     while(1):
-
         cv2.imshow('output',output)
         cv2.imshow('input',img)
         k = cv2.waitKey(1)
