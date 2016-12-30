@@ -10,7 +10,7 @@ all_desc_sample = {};
 all_desc_mean   = [];
 all_desc_test   = [];
 
-offsets = [-1 0; 1 0; 0 -1; 0 1];
+offsets = [0 1; -1 1; -1 0; -1 -1];
 
 [all_desc_mean all_desc_sample] = trainingFeatures(trainingset, offsets);
 all_desc_test = testingFeatures(testset, offsets);

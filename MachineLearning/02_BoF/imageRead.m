@@ -13,7 +13,7 @@
 
 function imageset = imageRead(rootpath, subfolders, image_per_class)
     imageset = cell(length(subfolders), image_per_class);
-    
+
     for i = 1:size(subfolders, 2)
         fn = { dir(fullfile(rootpath, char(subfolders(i)), '*.jpg')) };
 
