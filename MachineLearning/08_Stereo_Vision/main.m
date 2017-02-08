@@ -10,7 +10,7 @@ imR = imread('im1.png');
 % imshow(imComp); title('Composite Image for 3D viewing');
 
 % Compute disparity map using block matching and sub-pixel estimation
-fprintf('Performing basic block matching...\n'); fflush(stdout);
+fprintf('Performing basic block matching...\n'); %fflush(stdout);
 
 % Timer
 tic();
@@ -75,16 +75,20 @@ for m = 1:imHeight
     end
 
     if (mod(m, 10) == 0)
-        fprintf('Image row %d / %d (%.0f%%)\n', m, imHeight, (m / imHeight) * 100); fflush(stdout);
+        fprintf('Image row %d / %d (%.0f%%)\n', m, imHeight, (m / imHeight) * 100); %fflush(stdout);
     end
 end
 
 elapsed = toc();
-fprintf('Time taken %.2f min.\n', elapsed / 60.0); fflush(stdout);
+fprintf('Time taken %.2f min.\n', elapsed / 60.0); %fflush(stdout);
 
-fprintf('Displaying disparity map...\n'); fflush(stdout);
+fprintf('Displaying disparity map...\n'); %fflush(stdout);
 
-figure(1); clf;
+figure(1)
+subplot(1, 2, 1); imshow(imL);
+subplot(1, 2, 2); imshow(imR);
+
+figure(2); clf;
 imshow(DBasicSubpixel, []);
 axis image;
 colormap('jet');
